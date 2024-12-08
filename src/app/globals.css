@@ -2,26 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  body {
+    /* background-image: url("https://w7.pngwing.com/pngs/495/874/png-transparent-stars-background-blue-fashion-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 4; */
+    color: black;
+    background-color: white;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .menuLink{
+    @apply cursor-pointer hover:border-b hover:transition-transform duration-150
+  }
+  #cards{
+    @apply cursor-pointer hover:transition duration-100 transform hover:scale-110 hover:opacity-60
+  }
+  #hero{
+    background-image: url('/bgimage.png');
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .tags{
+    background-color: #0abde3;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 3px 10px;
+    display: inline-block;
+    color: white;
+    font-size: 12px;
+  }
+
+  .tags:last-child{
+    margin-right: 0;
+  }
+
+  .tags:nth-child(2) {
+    background-color: #a55eea;
+  }
+  .tags:nth-child(3) {
+    background-color: #db9f10;
+  }
+  .tags:nth-child(4) {
+    background-color: #eb4d4b;
   }
 }
