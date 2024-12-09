@@ -1,25 +1,88 @@
-import React from 'react';
-import Image from 'next/image';
+"use client";
 
-export default function Navbar() {
+import Link from "next/link";
+import React, { useState } from "react";
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className='w-full bg-white h-auto flex flex-col md:flex-row items-center justify-between p-4 md:p-8 border-b-2 border-b-[#e7eef6]'>
-      <div className="first flex flex-col md:flex-row items-center gap-4 md:gap-16">
-        <h1 className='text-[#3563e9] text-4xl font-bold'>MORENT</h1>
-        <div className="input relative w-full md:w-auto">
-          <Image src={'/search-normal.png'} alt='' width={24} height={24} className='absolute top-1/2 left-3 transform -translate-y-1/2'/>
-          <input 
-            type="text" 
-            title="search" 
-            placeholder="Say something here" 
-            className='border-2 border-[#e7eef6] w-full md:w-[492px] h-[44px] rounded-full p-2 pl-10 pr-12'
-          />
-          <Image src={'/filter.png'} alt='' width={24} height={24} className='absolute top-1/2 right-3 transform -translate-y-1/2'/>
+    <nav className="w-full bg-white pt-[14px] pb-[14px]">
+      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 lg:px-0">
+        <div className="hidden md:flex gap-8 ml-3">
+          <Link href="/" className="text-[#007580] text-[14px] font-medium">
+            Home
+          </Link>
+          <Link href="/product" className="text-[14px] font-medium">
+            Shop
+          </Link>
+          <Link href="/product" className="text-[14px] font-medium">
+            Product
+          </Link>
+          <Link href="/faq" className="text-[14px] font-medium">
+            Pages
+          </Link>
+          <Link href="/about" className="text-[14px] font-medium">
+            About
+          </Link>
         </div>
+        <div className="hidden md:flex items-center gap-4 ml-auto mr-4">
+         <Link href="/contact"> <span className="font-normal text-[#636270] text-[14px]">
+            Contact:
+          </span>
+            
+          </Link>
+          <span className="font-medium text-[#272343] text-[14px] ml-1">
+            (808) 555-0111
+          </span>
+        </div>
+        <button
+          className="lg:hidden flex items-center justify-center p-2"
+          onClick={toggleMenu}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d={
+                isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
+          </svg>
+        </button>
       </div>
-      <div className="icons mt-4 md:mt-0">
-        <Image src={'/Profil & Notification.png'} alt='' width={236} height={44} />
-      </div>
-    </div>
+      {isMenuOpen && (
+        <div className="lg:hidden flex flex-col gap-4 mt-4 px-4">
+          <Link href="/" className="text-[#007580] text-[14px] font-medium">
+            Home
+          </Link>
+          <Link href="/product" className="text-[14px] font-medium">
+            Shop
+          </Link>
+          <Link href="/product" className="text-[14px] font-medium">
+            Product
+          </Link>
+          <Link href="/faq" className="text-[14px] font-medium">
+            Pages
+          </Link>
+          <Link href="/about" className="text-[14px] font-medium">
+            About
+          </Link>
+        </div>
+      )}
+    </nav>
   );
-}
+};
+
+export default Navbar;
